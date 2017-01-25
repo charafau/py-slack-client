@@ -5,11 +5,12 @@ import os
 import sys
 import time
 
-from PyQt5 import uic
 from PyQt5.QtCore import QThread, pyqtSignal
 from PyQt5.QtWidgets import QApplication
 from PyQt5.QtWidgets import QMainWindow
 from slackclient import SlackClient
+
+from app.gui.main_window import Ui_MainWindow
 
 token = os.environ['SLACK_API_TOKEN']
 
@@ -62,14 +63,14 @@ def main():
     sys.exit(app.exec_())
 
 
-class MainWindow(QMainWindow):
+class MainWindow(QMainWindow, Ui_MainWindow):
     # signal emitted when new message is sent from window
     new_message = pyqtSignal(str)
 
     def __init__(self, *args, **kwargs):
         QMainWindow.__init__(self, *args, **kwargs)
 
-        uic.loadUi('main_window.ui', self)
+        self.setupUi(self)
 
         self.lineEdit.returnPressed.connect(self.send_message)
 
