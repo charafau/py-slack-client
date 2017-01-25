@@ -1,15 +1,16 @@
 #!/usr/bin/python3
 # -*- coding: utf-8 -*-
+import json
+import os
 import sys
 
-from slackclient import SlackClient
 from PyQt5.QtWidgets import QApplication, QWidget
-import json
+from slackclient import SlackClient
 
 
 def main():
     print('hello')
-      token = '#YOUR TOKEN HERE'
+    token = os.environ['SLACK_API_TOKEN']
     sc = SlackClient(token)
 
     response = sc.api_call("channels.list",
