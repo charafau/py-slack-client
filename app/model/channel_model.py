@@ -1,9 +1,6 @@
-import os
-
 import rx
-from slackclient import SlackClient
 
-from app.entities.channel import Channel
+from app.model import slack_client
 
 
 class ChannelModel:
@@ -11,7 +8,6 @@ class ChannelModel:
         super().__init__()
 
     def fetch_channels(self):
-        schema = Channel()
         return self.rx_request('channels.list').map(lambda val: val['channels'])
         # need to add this transform here later
         # .map(lambda value, index: (schema.deserialize(value)))
@@ -21,9 +17,7 @@ class ChannelModel:
         def subscribe(observer):
             # TODO: need to create singleton of this SlackClient and inject it
             # here somehow...
-            token = os.environ['SLACK_API_TOKEN']
-            sc = SlackClient(token)
-            result = sc.api_call(method, **kwargs)
+            result = slack_client.api_call(method, **kwargs)
             observer.on_next(result)
             observer.on_completed()
 
