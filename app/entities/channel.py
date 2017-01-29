@@ -1,6 +1,7 @@
 import colander
 
-#TODO: add unit test for parsing
+
+# TODO: add unit test for parsing
 class Channel(colander.MappingSchema):
     id = colander.SchemaNode(colander.String())
     name = colander.SchemaNode(colander.String())

@@ -6,5 +6,5 @@ class ChannelViewModel:
         super().__init__()
         self.model = ChannelModel()
 
-    def fetchChannels(self):
-        return self.model.fetchChannels()
+    def fetch_channels(self):
+        return self.model.fetch_channels()
