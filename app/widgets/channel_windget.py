@@ -11,5 +11,5 @@ class ChannelWidget(QWidget, Ui_ChannelListWidget):
         self.setupUi(self)
 
         vm = ChannelViewModel()
-        ds = vm.fetchChannels()
+        ds = vm.fetch_channels()
         x = ds.subscribe(lambda val: [self.channelList.addItem(item['name']) for item in val])

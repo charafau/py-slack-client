@@ -2,20 +2,16 @@
 # -*- coding: utf-8 -*-
 import json
 import os
-import sys
 import time
 
-import rx
-from rx import Observable, Observer
-
 from PyQt5.QtCore import QThread, pyqtSignal
-from PyQt5.QtWidgets import QApplication
 from PyQt5.QtWidgets import QMainWindow
 from slackclient import SlackClient
+
 from app.application import Application
 from app.gui.main_window import Ui_MainWindow
 
-# token = os.environ['SLACK_API_TOKEN']
+token = os.environ['SLACK_API_TOKEN']
 
 def print_response(response):
     print(json.dumps(response, sort_keys=True, indent=2,
