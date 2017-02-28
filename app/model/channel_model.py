@@ -3,6 +3,7 @@ from rx import Observable, Observer
 from slackclient import SlackClient
 from app.entities.channel import Channel
 import colander
+import os
 
 
 class ChannelModel:
@@ -18,7 +19,7 @@ class ChannelModel:
     def rx_request(self, method, **kwargs):
         def subscribe(observer):
             #TODO: need to create singleton of this SlackClient and inject it here somehow...
-            token = '#YOUR TOKEN HERE'
+            token = os.environ['SLACK_API_TOKEN']
             sc = SlackClient(token)
             result = sc.api_call(method, **kwargs)
             observer.on_next(result)

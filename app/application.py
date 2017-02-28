@@ -12,7 +12,7 @@ class Application:
 
         app = QApplication(sys.argv)
 
-        chatWindow = ChatWindow()
-        chatWindow.show()
+        chat_window = ChatWindow()
+        chat_window.show()
 
         sys.exit(app.exec_())
