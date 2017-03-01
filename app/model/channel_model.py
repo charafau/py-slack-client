@@ -13,12 +13,9 @@ class ChannelModel:
     def fetchChannels(self):
         schema = Channel()
         return self.rx_request('channels.list').map(lambda val: val['channels'])
-        # need to add this transform here later
-        # .map(lambda value, index: (schema.deserialize(value)))
 
     def rx_request(self, method, **kwargs):
         def subscribe(observer):
-            #TODO: need to create singleton of this SlackClient and inject it here somehow...
             token = os.environ['SLACK_API_TOKEN']
             sc = SlackClient(token)
             result = sc.api_call(method, **kwargs)
