@@ -1,6 +1,7 @@
 from PyQt5.QtCore import Qt
 from PyQt5.QtWidgets import QWidget
 
+from app.entities.channel import Channel
 from app.gui.channel_list_widget import Ui_ChannelListWidget
 from app.viewmodel.channel_viewmodel import ChannelViewModel
 from rx.subjects import BehaviorSubject
@@ -19,9 +20,9 @@ class ChannelWidget(QWidget, Ui_ChannelListWidget):
         x = ds.subscribe(lambda val: [self.add_channel(item) for item in val])
         self.channelList.selectionModel().currentChanged.connect(self.on_row_changed)
 
-    def add_channel(self, item):
-        self.channels.append(item)
-        self.channelList.addItem(item['name'])
+    def add_channel(self, channel: Channel):
+        self.channels.append(channel)
+        self.channelList.addItem(channel.name)
 
     def on_row_changed(self, current, previous):
         print('Row %d selected' % current.row())

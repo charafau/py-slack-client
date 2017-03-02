@@ -10,11 +10,11 @@ class ChannelModel:
     def __init__(self):
         super().__init__()
 
-    def fetchChannels(self):
-        schema = Channel()
-        return self.rx_request('channels.list').map(lambda val: val['channels'])
+    def fetchChannels(self) -> Observable:
+        return self.rx_request('channels.list').map(lambda val: val['channels']) \
+            .map(lambda dictionaries: [Channel(**dictionary) for dictionary in dictionaries])
 
-    def rx_request(self, method, **kwargs):
+    def rx_request(self, method, **kwargs) -> Observable:
         def subscribe(observer):
             token = os.environ['SLACK_API_TOKEN']
             sc = SlackClient(token)

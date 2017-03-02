@@ -13,8 +13,8 @@ class ChatWindow(QWidget, Ui_chatWidget):
         self.channelListLayout.addWidget(channel_widget)
         message_widget = MessageWidget()
         self.layout_message.addWidget(message_widget)
-        channel_widget.get_click_observable()\
-            .subscribe(lambda value: message_widget.select(value))
+        # channel_widget.get_click_observable()\
+        #     .subscribe(lambda value: message_widget.select(value))
 
 
 
