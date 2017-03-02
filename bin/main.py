@@ -13,6 +13,7 @@ from app.gui.main_window import Ui_MainWindow
 
 token = os.environ['SLACK_API_TOKEN']
 
+
 def print_response(response):
     print(json.dumps(response, sort_keys=True, indent=2,
                      separators=(',', ': ')))
@@ -43,22 +44,6 @@ class WatcherThread(QThread):
 
 
 def main():
-
-    # app = QApplication(sys.argv)
-    #
-    # # show main window
-    # w = MainWindow()
-    # w.show()
-    #
-    # # start watcher
-    # watcher_thread = WatcherThread()
-    # watcher_thread.start()
-    #
-    # # connect watcher thread with window
-    # watcher_thread.new_message.connect(w.print_message)
-    # w.new_message.connect(watcher_thread.send_message)
-    #
-    # sys.exit(app.exec_())
     application = Application()
     application.start()
 

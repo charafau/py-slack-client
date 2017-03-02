@@ -1,12 +1,17 @@
-import colander
+from typing import NamedTuple
 
 
-# TODO: add unit test for parsing
-class Channel(colander.MappingSchema):
-    id = colander.SchemaNode(colander.String())
-    name = colander.SchemaNode(colander.String())
-    is_member = colander.SchemaNode(colander.Boolean())
-    is_archived = colander.SchemaNode(colander.Boolean())
-    is_general = colander.SchemaNode(colander.Boolean())
-    num_members = colander.SchemaNode(colander.Integer())
-    # created = colander.SchemaNode(colander.Time())
+class Channel(NamedTuple):
+    id: str
+    name: str
+    is_channel: bool
+    created: complex
+    creator: str
+    is_archived: bool
+    is_general: bool
+    is_member: bool
+    members: list
+    topic: str
+    purpose: str
+    previous_names: list
+    num_members: int

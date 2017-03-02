@@ -57,7 +57,14 @@
          <number>0</number>
         </property>
         <item>
-         <widget class="QListWidget" name="channelList"/>
+         <widget class="QListWidget" name="channelList">
+          <property name="styleSheet">
+           <string notr="true">border: 0; outline: none; color: white;</string>
+          </property>
+          <property name="frameShape">
+           <enum>QFrame::NoFrame</enum>
+          </property>
+         </widget>
         </item>
        </layout>
       </widget>
@@ -78,7 +85,11 @@
          <number>0</number>
         </property>
         <item>
-         <widget class="QListWidget" name="privateMessageList"/>
+         <widget class="QListWidget" name="privateMessageList">
+          <property name="styleSheet">
+           <string notr="true">border: 0; outline: none; color: white;</string>
+          </property>
+         </widget>
         </item>
        </layout>
       </widget>
