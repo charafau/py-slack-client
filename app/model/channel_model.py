@@ -6,7 +6,7 @@ import colander
 import os
 
 
-class ChannelModel:
+class ChannelModel(object):
     def __init__(self):
         super().__init__()
 
