@@ -4,14 +4,14 @@ from PyQt5.QtWidgets import QWidget
 from app.entities.channel import Channel
 from app.gui.channel_list_widget import Ui_ChannelListWidget
 from app.viewmodel.channel_viewmodel import ChannelViewModel
-from rx.subjects import BehaviorSubject
+from rx.subjects import Subject
 
 
 class ChannelWidget(QWidget, Ui_ChannelListWidget):
     def __init__(self, *args, **kwargs):
         QWidget.__init__(self, *args, **kwargs)
         self.setupUi(self)
-        self.subject = BehaviorSubject(-1)
+        self.subject = Subject()
         self.channels = []
         vm = ChannelViewModel()
         self.channelList.setAttribute(Qt.WA_MacShowFocusRect, 0)

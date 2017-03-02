@@ -8,3 +8,6 @@ class MessageWidget(QWidget, Ui_MessageWidget):
         QWidget.__init__(self, *args, **kwargs)
         self.setupUi(self)
 
+    def select(self, channel):
+        pass
+
